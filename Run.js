@@ -240,7 +240,7 @@ app.get("/d", (req, res) => {
 app.get("/get",(req,res)=>{
 
     try{
-
+        // GET INFO IMAGE ONLY JPG FORMAT
         new exifImage({image: "./iamges/38e90eae9578d780480cf76282640070_png_to_jpg.jpg"},(err,data)=>{
             if(err) console.log(err);
             else {
@@ -269,25 +269,25 @@ app.get("/get",(req,res)=>{
 app.get('/show', function (req, res){
     // file = req.params.upload;
     console.log(req.params.upload);
+    // var img = fs.readFileSync(__dirname + "YUOR DIRECTORY");
     var img = fs.readFileSync(__dirname + "/images/" + "7dd6b9bdb1965eaa8b473fe1ddc03dfa.jpg");
     res.writeHead(200, {'Content-Type': 'image/jpg' });
     res.end(img, 'binary');
 
 });
 
-
+// Run Server
 app.listen(PORT, () => {
-    console.log(`Running Server on Port http://www.localhost:3000/images/8-1.jpg`);
+    console.log(`Running Server on Port http://www.localhost:3000`);
 });
 
+// convert byte to KB and .....
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
-
     const k = 1024;
     const dm = decimals < 0 ? 0 : decimals;
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+
 }
